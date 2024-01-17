@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "archivosdual",
+  "private_key_id": "43733046c1f074a208892ae4b77b24d9409bdf0d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCwXvuxQt4SWqiy\nUukbtqfj0DbH36M5RR1HPv5b2kxDJf7tDXhU3ri/97Sih3HeRcmIY+dhM53lKvvf\ngxSxx2tk6s31ToEA00vuSgbRcWthMN/8vE6M+A+4kBdN2Bz1qTIKokwLEOwnQhmD\nFlciR8Fp0YQ4/C/N76KJq6D/TR38R8rTO3gW5Z3j5VGwY2ZlckoG07Xa1s03fjs3\nkUYO4Y/8v+Nz5B8wKOHio5RBreOgCDMgyiHMwZOkrbvCrYNx+SxydwV4erE5RfzN\n7iCjPjGKQFZQZhmFh7FIhL3SADuNMK9neN7f5WTIG9fsZHwiHEh+nG5AikYW+abO\nLMW0fv+tAgMBAAECgf9KhSzTjkKb1AfIpj+C9ipPQiqN88WDl9rxv4FkTgLrBvgv\nhlbRhUmKfZ7/t+WPhO0iM766feoOakWsquCTkoRN9OgQ6JqZPq4BK5tgjgumL9XJ\nc8cSHmiGEwZwXbU0Fx6NtQVsUjogXE1rQIU7IWvCH5npJKUOM7JOzmBi1AgCD5/k\nUASiA9NfIVFyz/o9NC2PIaDJ6kzFpVrpXrPBtYVIV3MrVMd80CPV0Rw9+ryTpGC+\nfqM28GAp5ARN9HIhOlL6go/MH0Fm3DDV2IeIoa9p/+PAW9aDOXwqRFTikfu99xkv\naGD9CsAnH7xywF677yA171VHTae0OKdZWE1LE5ECgYEA1129M0YFECAjbvXoWUA8\nsnxw5DE8TGEh6aQY8qfEvR6iAkHK5Aa5soTbNs7qyNkbir0Wp4mTUfxYU+Rnz+GH\ncfvlhdvTMR57hcJ61kqg9Ui37kbBeqVUkNlDnFJpdnnTj048pPmn2paYsb8/KjlW\nGhpWEyt45PHAITcEnQUkNpUCgYEA0aXD59qpCLVEZRs1A45+Xh3336hRUdlAAvGb\nKa+B7662xY7rM7OrPAhJ399rMSDAlh6UM43yFgZfPAQ077cViRACN30OuNluu5yF\nwVySdiHvCMZkgf2iwzXbXqxk/FlNuZRKRl+GV6MEZeglWwQPfIuTkJ4DuxA3fe3w\nlAsn1rkCgYBxggFO/c97UUT7nXWpXJbhB39EdcKvCt6h0pAnjE6/0l5WzDBQAE9t\nDGKxP1s1ImBGviQrhvHzWwl+pbolMVt+suGkrFhh4gv+UqMFQG4W+Q2f8wDUUEEC\n2s+smy7kd48OT5Dc7owORCMUQ5TZ/0AnH8xP7DCakePOXb37uBL/BQKBgQCG4EGI\nQansG0p0TauurRbpkBgvgQdIRB+lhTDRAcPzopCdyxPQgG/SwHZenEtHIQ4lxmiM\nPm8X8mOEpiQ0cLJfKrhyYHd/Pwu5kbqPqvHjJHO3ToPNCZOUSWrnnrudigqyMRAT\n9FLmwM8MjOyzgIpCEz4NlUtLJuS8lL7pT8ACqQKBgQC3YIZeG+nkwig86is5AQkF\nYfkcPb9V6SNZzCQC5yvRJ69zhu6MaO+GFKokIr1s8sGgqqBfcEZfUcm5tJ/nkUHY\nNxXzcP0u7GGjYBrOCctFW7vuz+8qxcVR4Zy1lh1vsF1BG5yKqEfmB1HxgSuooVWe\nNFem1mUf+kYIk+V4/koetQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "prueba-cargas@archivosdual.iam.gserviceaccount.com",
+  "client_id": "104935559805735308988",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/prueba-cargas%40archivosdual.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
