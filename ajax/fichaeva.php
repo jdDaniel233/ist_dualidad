@@ -1,5 +1,5 @@
 <?php
-require_once '../modelos/rubricaproyecto.php';
+require_once '../modelos/fichaeva.php';
 
 $conexion = new Conexion();
 
@@ -41,7 +41,7 @@ function mostrarDatos() {
 			$cedula = $fila["est_cedula"];
 			$periodo = $fila["cat_periodo"];
 			$login = $fila["est_login"];
-			//$clave = $fila["est_clave"];
+			$clave = $fila["est_clave"];
 			
            
             $datos[] = array(
@@ -74,10 +74,15 @@ function guardarDatos() {
     $criterio3 = $_POST['criterio3'];
     $criterio4 = $_POST['criterio4'];
     $criterio5 = $_POST['criterio5'];
+	$criterio6 = $_POST['criterio6'];
+    $criterio7 = $_POST['criterio7'];
+    $criterio8 = $_POST['criterio8'];
+    $criterio9 = $_POST['criterio9'];
+    $criterio10 = $_POST['criterio10'];
    
 
     $conexion = new Conexion();
-    $resultado = $conexion->guardarRubricap($id,$criterio1, $criterio2, $criterio3, $criterio4, $criterio5);
+    $resultado = $conexion->guardarEva($id,$criterio1, $criterio2, $criterio3, $criterio4, $criterio5,$criterio6, $criterio7, $criterio8, $criterio9, $criterio10);
 echo $resultado ? "Datos registrados correctamente" : "No se pudo registrar datos incorrectos";
    
 }

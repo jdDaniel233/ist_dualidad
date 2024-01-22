@@ -13,6 +13,7 @@ if (strlen(session_id())<1)
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
+	
   <link rel="stylesheet" href="../public/css/bootstrap.min.css">
   <!-- Font Awesome -->
 
@@ -146,8 +147,8 @@ if ($_SESSION['Generación']==1) {
           </a>
           <ul class="treeview-menu">
            <li><a href="bitacora.php"><i class="fa fa-circle-o"></i> Bitacoras</a></li>
-		   <li><a href=""><i class="fa fa-circle-o"></i> Proyecto Empresarial</a></li>
-		   <li><a href="rubricaproy2.php"><i class="fa fa-circle-o"></i> Rubrica del Proyecto</a></li>
+		   <li><a href="informepro.php"><i class="fa fa-circle-o"></i> Proyecto Empresarial</a></li>
+		   
 		   
           </ul>
         </li>';
@@ -165,6 +166,7 @@ if ($_SESSION['Acceso']==1) {
           </a>
           <ul class="treeview-menu">
             <li><a href="planificacion.php"><i class="fa fa-circle-o"></i> Asignación</a></li>
+			<li><a href="listaMatriz.php"><i class="fa fa-circle-o"></i> Asignación</a></li>
             
           </ul>
         </li>';
@@ -190,15 +192,16 @@ if ($_SESSION['Reportes']==1) {
 if ($_SESSION['Custodios']==1) {
   echo '<li class="treeview">
           <a href="#">
-            <i class="fa fa-bar-chart"></i> <span>Custodios</span>
+            <i class="fa fa-folder"></i> <span>Opciones Tutor</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="activoscustodio.php"><i class="fa fa-circle-o"></i> Consulta de Activos</a></li>
-         
-            <li><a href="mantenimiento.php"><i class="fa fa-circle-o"></i> Pedido de Mantenimiento</a></li>
+		  <li><a href=""><i class="fa fa-circle-o"></i> Informe del tutor</a></li>
+		   <li><a href=""><i class="fa fa-circle-o"></i> Bitacora Visita Empresas</a></li>
+           <li><a href="rubricaproy2.php"><i class="fa fa-circle-o"></i> Rubrica del Proyecto</a></li>
+		   <li><a href="fichaeva.php"><i class="fa fa-circle-o"></i> Fciha de Evaluación</a></li>
 
           </ul>
         </li>';

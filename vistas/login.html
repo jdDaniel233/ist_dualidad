@@ -9,9 +9,7 @@
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../public/css/bootstrap.min.css">
   <!-- Font Awesome -->
-
   <link rel="stylesheet" href="../public/css/font-awesome.min.css">
-
   <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../public/css/_all-skins.min.css">
   <!-- Morris chart --><!-- Daterange picker -->
@@ -24,7 +22,7 @@
     <p class="login-box-msg"><img src="../files/img/login.png" width="215" height="150"></p>
     <p class="login-box-msg">PORTAFOLIO DOCENTE</p>
 
-    <form  method="post" id="frmAcceso">
+    <form method="post" id="frmAcceso">
       <div class="form-group has-feedback">
         <input type="text" id="logina" name="logina" class="form-control" placeholder="Usuario">
         <span class="fa fa-user form-control-feedback"></span>
@@ -34,18 +32,93 @@
         <span class="fa fa-key form-control-feedback"></span>
       </div>
       <div class="row" >
-             <!-- /.col -->
-       
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>	
-      
-        <!-- /.col -->
+        <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+        <!-- Botón para abrir el formulario flotante (modal) -->
+        <button type="button" class="btn btn-primary btn-block btn-flat" data-toggle="modal" data-target="#crearCuentaModal">
+          Crear Cuenta
+        </button>
       </div>
     </form>
-
   </div>
   <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
+
+<!-- Modal para el formulario de Crear Cuenta -->
+<div class="modal fade" id="crearCuentaModal" tabindex="-1" role="dialog" aria-labelledby="crearCuentaModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="crearCuentaModalLabel">Crear Cuenta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario para Crear Cuenta -->
+        <form action="" name="estudiante" id="estudiante" method="POST">
+          <!-- ... tu formulario existente ... -->
+		<div class="form-group col-lg-12 col-md-12 col-xs-12">
+      <label for="">Nombre(*):</label>
+     
+      <input class="form-control" type="text" name="nombre" id="nombre" maxlength="100" placeholder="Nombre Completo" required>
+    </div>
+   
+    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Cédula(*):</label>
+      <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Cedula" maxlength="10">
+    </div>
+     <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Teléfono</label>
+      <input class="form-control" type="text" name="telefono" id="telefono" maxlength="10" placeholder="Número de telefono">
+    </div>
+	  <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Correo</label>
+      <input class="form-control" type="email" name="correo" id="correo" maxlength="200" placeholder="Correo">
+    </div>
+	  <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Direccion</label>
+      <input class="form-control" type="text" name="direccion" id="direccion" maxlength="100" placeholder="Dirección">
+    </div>
+	  <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Carrera</label>
+      <select class="form-control" type="text" name="carrera" id="carrera" maxlength="20" placeholder="Carrera">
+	
+      </select>
+    </div>
+	  <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Periodo</label>
+      <select class="form-control" type="text" name="periodo" id="periodo" maxlength="20" placeholder="Periodo"> </select>
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Login(*):</label>
+      <input class="form-control" type="text" name="login" id="login" maxlength="20" placeholder="nombre de usuario" required>
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Clave(*):</label>
+  	  <input class="form-control" type="hidden" name="claveu" id="claveu">
+      <input class="form-control" type="password" name="clave" id="clave" maxlength="64" placeholder="Clave">
+    </div>    
+    <!--<div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label>Permisos</label>
+      <ul id="permiso" style="list-style: none;">
+        
+      </ul>
+    </div>-->
+      
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
+      
+		<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- jQuery 3 -->
 <script src="../public/js/jquery.min.js"></script>
@@ -53,8 +126,9 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="../public/js/bootstrap.min.js"></script>
 <script src="../public/js/bootbox.min.js"></script>
+	<script src="scripts/hmac-sha256.js"></script>
+<script src="scripts/estudiante.js"></script>
 <script src="scripts/login.js"></script>
 <!-- iCheck -->
-
 </body>
 </html>

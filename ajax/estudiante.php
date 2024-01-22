@@ -84,6 +84,7 @@ function mostrarDatos() {
 }
 
 function guardarDatos() {
+	
    
     $nombre = $_POST['nombre'];
     $cedula = $_POST['cedula'];
@@ -94,9 +95,10 @@ function guardarDatos() {
     $periodo = $_POST['periodo'];
     $login = $_POST['login'];
     $clave = $_POST['clave'];
+	$clavehash=hash("SHA256", $clave);
 
     $estudiante = new Estudiante();
-    $resultado = $estudiante->guardarEstudiante($nombre, $correo, $telefono, $direccion, $carrera, $cedula, $periodo, $login, $clave);
+    $resultado = $estudiante->guardarEstudiante($nombre, $correo, $telefono, $direccion, $carrera, $cedula, $periodo, $login, $clavehash);
 echo $resultado ? "Datos registrados correctamente" : "No se pudo registrar Login existente";
    /* if ($resultado) {
         echo "El estudiante se ha registrado exitosamente.";
@@ -112,11 +114,7 @@ function eliminarArtista() {
     $conexion = new Conexion();
     $resultado = $conexion->eliminarArtista($id);
 echo $resultado ? "Datos registrados correctamente" : "No se pudo registrar Login existente";
-   /* if ($resultado) {
-        echo "El artista se ha eliminado exitosamente.";
-    } else {
-        echo "Error al eliminar el artista.";
-    }*/
+  
 }
 
 

@@ -1,3 +1,4 @@
+// JavaScript Document
 
 $(document).ready(function() {
     $('#tbllistado').DataTable({
@@ -16,12 +17,12 @@ $(document).ready(function() {
             { data: 'cedula' },
 			{ data: 'periodo' },
             { data: 'login' },
-			
+			{ data: 'clave' },
             
             {
                 // Agrega el botón "Visualizar" y maneja el evento de clic
                 render: function(data, type, row) {
-                    return '<button class="btn btn-success btn-xs btnVisualizar" data-id="' + row.id + '">Calificar Rubrica</button>';
+                    return '<button class="btn btn-success btn-xs btnVisualizar" data-id="' + row.id + '">Calificar Ficha</button>';
                 }
             }
         ]
@@ -31,7 +32,7 @@ $(document).ready(function() {
     $('#tbllistado').on('click', '.btnVisualizar', function() {
         var id = $(this).data('id');
 		
-        window.location.href = 'rubricaproyecto.php?id=' + id;
+        window.location.href = 'fichaeva2.php?id=' + id;
     });
 });
 

@@ -33,14 +33,8 @@ function mostrarDatos() {
         $datos = array();
         while ($fila = $respuesta->fetch_assoc()) {
 			$id = $fila["usu_id"];
-            $cedula = $fila["usu_cedula"];
-            $nombre = $fila["usu_nombre"];
-            
-
-            // Agregamos los botones de "Editar" y "Eliminar" en la columna "Opciones"
-          /*  $opcionbtn = '<button class="btn_editar"  data_id="' . $id . '">Editar</button>' .
-                        '<a href="../ajax/opciones.php?op=eliminarA" "' . $id . '">Eliminar</a>';*/
-
+            $cedula = $fila["est_cedula"];
+            $nombre = $fila["est_nombre"];
             $datos[] = array(
                 "id" => $id,
 				"cedula" => $cedula,

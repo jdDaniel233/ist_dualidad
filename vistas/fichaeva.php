@@ -38,7 +38,7 @@ if ($_SESSION['Escritorio']==1) {
       <th>Cedula</th>
       <th>Periodo</th>
 	  <th>Login</th>
-	  
+	  <th>Clave</th>
 	<th>Visualizar</th>
     </thead>
     <tbody>
@@ -62,9 +62,10 @@ if ($_SESSION['Escritorio']==1) {
 require 'footer.php';
  ?>
  <script src="scripts/hmac-sha256.js"></script>
- <script src="scripts/rubricaproy2.js"></script>
+ <script src="scripts/fichaeva.js"></script>
  <?php 
 }
 
 ob_end_flush();
   ?>
+

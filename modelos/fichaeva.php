@@ -21,9 +21,9 @@ public function datatabledoc2 ($id) {
     $sql = "CALL sp_cat(4)";
     return ejecutarConsultaSP($sql);
 }
-	public function guardarRubricap($id, $criterio1, $criterio2, $criterio3, $criterio4, $criterio5){
-    $sql = "call sp_rubrica(1, $id, '$criterio1', '$criterio2', '$criterio3', '$criterio4', '$criterio5',' ',' ',' ',' ',' ')";
-    echo $sql; // Agrega esta línea para imprimir la consulta (solo con fines de depuración)
+	public function guardarEva($id,$criterio1, $criterio2, $criterio3, $criterio4, $criterio5,$criterio6, $criterio7, $criterio8, $criterio9, $criterio10){
+    $sql = "call sp_rubrica(2, $id, '$criterio1', '$criterio2', '$criterio3', '$criterio4', '$criterio5', '$criterio6', '$criterio7', '$criterio8', '$criterio9', '$criterio10')";
+    //echo $sql; // Agrega esta línea para imprimir la consulta (solo con fines de depuración)
     return ejecutarConsultaSP($sql);
 }
 

@@ -13,7 +13,8 @@ public function __construct(){
 	
 public function guardarEstudiante($nombre, $correo, $telefono, $direccion, $carrera, $cedula, $periodo, $login, $clave){
 $sql="call sp_estudiantes(1,'$nombre', '$correo', '$telefono', '$direccion', $carrera, '$cedula', $periodo, '$login', '$clave')";
-//	return $sql;
+//return $sql;
+	echo $sql;
  return ejecutarConsultaSP($sql);
 }
 	
