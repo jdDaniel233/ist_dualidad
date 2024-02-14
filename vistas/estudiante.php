@@ -33,9 +33,9 @@ if ($_SESSION['Escritorio']==1) {
       <th>Nombre</th>
       <th>Correo</th>
       <th>Celular</th>
-      <th>Direccion</th>
+      <th>Dirección</th>
       <th>Carrera</th>
-      <th>Cedula</th>
+      <th>Cédula</th>
       <th>Periodo</th>
 		<th>Login</th>
 		<th>Opciones</th>
@@ -65,7 +65,7 @@ if ($_SESSION['Escritorio']==1) {
       <input class="form-control" type="email" name="correo" id="correo" maxlength="200" placeholder="Correo">
     </div>
 	  <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Direccion</label>
+      <label for="">Dirección</label>
       <input class="form-control" type="text" name="direccion" id="direccion" maxlength="100" placeholder="Dirección">
     </div>
 	  <div class="form-group col-lg-6 col-md-6 col-xs-12">

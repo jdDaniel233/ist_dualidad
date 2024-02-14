@@ -55,7 +55,7 @@ if ($_SESSION['Escritorio']==1) {
                                 </div>
 
                                 <div class="form-group col-lg-6">
-                                    <label for="inf_resumen">Resumen Ejecutivo:</label>
+                                    <label for="inf_resumen">Resúmen Ejecutivo:</label>
                                     <textarea id="inf_resumen" name="inf_resumen" class="form-control" required maxlength="100"
                                         oninput="actualizarContador('inf_resumen', 'caracteresRestantes1')"></textarea>
                                     <small id="caracteresRestantes1">100/100</small>
@@ -78,7 +78,7 @@ if ($_SESSION['Escritorio']==1) {
                                 </div>
 
                                 <div class="form-group col-lg-6">
-                                    <label for="inf_conclusiones">Objetivos especificos:</label>
+                                    <label for="inf_conclusiones">Objetivos Específicos:</label>
                                     <textarea id="inf_conclusiones" name="inf_conclusiones" class="form-control" required
                                         maxlength="100"
                                         oninput="actualizarContador('inf_conclusiones', 'caracteresRestantes4')"></textarea>
@@ -86,7 +86,7 @@ if ($_SESSION['Escritorio']==1) {
                                 </div>
 
                                 <div class="form-group col-lg-6 col-lx-6">
-                                    <label for="inf_recomendaciones">Propuesta y ejecucion:</label>
+                                    <label for="inf_recomendaciones">Propuesta y ejecución:</label>
                                     <textarea id="inf_recomendaciones" name="inf_recomendaciones" class="form-control" required
                                         maxlength="100"
                                         oninput="actualizarContador('inf_recomendaciones', 'caracteresRestantes5')"></textarea>
@@ -94,7 +94,7 @@ if ($_SESSION['Escritorio']==1) {
                                 </div>
 
                                 <div class="form-group col-lg-6 ">
-                                    <label for="inf_referencias">Plan Economico-Financiero:</label>
+                                    <label for="inf_referencias">Plan Económico-Financiero:</label>
                                     <textarea id="inf_referencias" name="inf_referencias" class="form-control" required
                                         maxlength="100"
                                         oninput="actualizarContador('inf_referencias', 'caracteresRestantes6')"></textarea>
@@ -115,7 +115,7 @@ if ($_SESSION['Escritorio']==1) {
                                     <small id="caracteresRestantes6">100/100</small>
                                 </div>
 	 							<div class="form-group col-lg-6 ">
-                                    <label for="inf_referencias">Bibliografia:</label>
+                                    <label for="inf_referencias">Bibliografía:</label>
                                     <textarea id="inf_referencias" name="inf_referencias" class="form-control" required
                                         maxlength="100"
                                         oninput="actualizarContador('inf_referencias', 'caracteresRestantes6')"></textarea>

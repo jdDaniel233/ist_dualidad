@@ -10,7 +10,7 @@ if (!isset($_SESSION['usu_nombre'])) {
 }else{
 
 
-if ($_SESSION['Activos']==1 or $_SESSION['Actas']==1 ){
+//if ($_SESSION['Activos']==1 or $_SESSION['Actas']==1 ){
 require_once "../modelos/informes.php";
 $info=new Informes();
 $_SESSION["inf"]=$_GET["inf"];
@@ -458,9 +458,9 @@ $tope=$pdf->getx();
 
 $pdf->Output();
 
-}else{
+/*}else{
 echo "No tiene permiso para visualizar el reporte";
-}
+}*/
 
 }
 

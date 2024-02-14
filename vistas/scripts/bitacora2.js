@@ -19,7 +19,9 @@ $(document).ready(function() {
                 // Columna personalizada para el botón "Visualizar"
                 data: null,
                 render: function(data, type, row) {
-                    return '<button class="btn btn-info btnVisualizar" data-id="' + row.id + '">Visualizar</button>';
+                    return '<button class="btn btn-info btn-md btnVisualizar" data-id="' + row.id + '">Registrar Días</button>' + '     '+
+       '<button class="btn btn-danger btn-md btn-eliminar" data-id="' + row.id + '"><i class="fa fa-close"></i></button>';
+
                 }
             }
         ],
@@ -33,6 +35,53 @@ $(document).ready(function() {
     $('#tbllistado2').on('click', '.btnVisualizar', function() {
         var idFila = $(this).data('id');
         // Abrir la ventana bitacoradet.php con el parámetro ID
-       window.location.href= 'bitacoradet.php?id=' + idFila;
+      window.location.href= 'bitacoradet.php?id=' + idFila;
+		 //window.location.href= '../reportes/rpt_practica.php';
     });
+	
+		
+	$('#tbllistado2').on('click', '.btn-eliminar', function () {
+    //var id_reg = $(this).data('id');
+		var idFila = $(this).data('id');
+
+    // Mostrar un cuadro de diálogo de confirmación
+    bootbox.confirm({
+        message: "¿Seguro que desea eliminar este registro?",
+        buttons: {
+            confirm: {
+                label: 'Sí',
+                className: 'btn-danger'
+            },
+            cancel: {
+                label: 'Cancelar',
+                className: 'btn-secondary'
+            }
+        },
+        callback: function (result) {
+            // result será true si se hace clic en 'Sí' y false en 'Cancelar'
+            if (result) {
+                // Aquí puedes seguir con tu lógica de AJAX para eliminar el registro
+                $.ajax({
+                    type: 'POST',
+                    url: '../ajax/bitacora.php?op=eliminarenca',
+                    data: {
+                        idFila: idFila
+                    },
+                    success: function(datos) {
+                        bootbox.alert(datos, function() {
+                            // Después de cerrar el mensaje de alerta, recargar la página
+                            location.reload();
+                        });
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    }
+                });
+            }
+        }
+    });
+});
+
+	
+
 });

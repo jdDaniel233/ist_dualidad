@@ -7,7 +7,7 @@ if (!isset($_SESSION['usu_nombre'])) {
 }else{
 
 require 'header.php';
-if ($_SESSION['Acceso']==1) {
+if ($_SESSION['Actas'] == 1 || $_SESSION['Generación'] == 1) {
  ?>
     <div class="content-wrapper">
     <!-- Main content -->
@@ -18,7 +18,7 @@ if ($_SESSION['Acceso']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-                                                                <h1 class="box-title">DOCUMENTOS DEL ESTUDIANTE <?php
+                                                                <h1 class="box-title">MIS DOCUMENTOS <?php
 $id = $_GET['id'];
 //$nombre = $_GET['nombre'];
 echo  $id;
@@ -26,13 +26,16 @@ echo  $id;
                             </div>
 <!--box-header-->
 <!--centro-->
-  <div style="width:900" id="listadoregistros">
-  								<table id="tbllistado2"  class="table table-striped table-bordered table-condensed table-hover"> 
+  <div style="width: 900" id="listadoregistros" data-usuarioid="<?php echo $_SESSION["usu_id"]; ?>">
+    <input type="hidden" id="usuarioid" name="usuarioid" value="<?php echo $_SESSION["usu_id"]; ?>">
+    <table id="tbllistado2" class="table table-striped table-bordered table-condensed table-hover">
 									<thead>
 										<th>ID</th>
 										<th>URL</th>
 										<th>Fecha</th>
 										<th>Tipo</th>
+										<th>Estado</th>
+										<th>Observación</th>
 										<th> </th>
 									</thead>
 									<tbody>
@@ -40,7 +43,7 @@ echo  $id;
 								  </table>
 								</div>
 <div class="panel-body" id="formularioregistros">
-<button class="btn btn-danger" onclick="window.location.href='aprobardoc.php'" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+<button class="btn btn-danger" onclick="window.location.href='documentoscheck.php'" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
 </div>
 <!--fin centro-->
 		<!-- Modal para mostrar el PDF -->
@@ -57,30 +60,7 @@ echo  $id;
                 <!-- Contenedor para incrustar el PDF -->
                 <div id="pdfViewer" style="width: 100%; height: 600px;"></div>
             </div>
-            <form id="form_docH">
-            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-             <label for="estado">Seleccione el estado:</label>
-             <select id="estado" name="estado" class="form-control">
-                <option value="">Seleccione</option>
-                <option value="18">Aprobar</option>
-                <option value="19">No Aprobar</option>
-             </select>
-             </div>
-             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <div class="form-group col-lg-6 col-md-6 col-xs-12" id="observacionesInputDiv" style="display: none;">
-				<label for="observaciones">Observaciones:</label>
-				<input type="text" id="observaciones" name="observaciones" placeholder="Ingrese observaciones" class="form-control">
-			</div>
-
-             </div>
-             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-              <button class="btn btn-primary" id="guardar" style="display: none;"><i class="fa fa-save"></i>Guardar</button>
-             </div>
-				<div class="form-group col-lg-12 text-center">
-                                   <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
-									
-          </div>
-             </form>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
@@ -101,7 +81,7 @@ echo  $id;
 }
 require 'footer.php';
  ?>
-<script src="scripts/aprobardoc2.js"></script>
+<script src="scripts/documentosest.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
  <?php 
 }

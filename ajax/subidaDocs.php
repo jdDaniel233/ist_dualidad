@@ -12,6 +12,17 @@ switch ($_GET["op"]) {
     case "insDoc":
         //var_dump($_POST);
         if($_SERVER['REQUEST_METHOD'] === "POST"){
+			 // Verificar si el archivo es un PDF
+            $allowedExtensions = ['pdf'];
+            $fileExtension = strtolower(pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION));
+
+            if (!in_array($fileExtension, $allowedExtensions)) {
+                // Si el archivo no es un PDF, devuelve un mensaje de error
+                $response = ['estado' => 'error', 'mensaje' => 'Formato de archivo incorrecto. Solo se permiten archivos PDF.'];
+                header('Content-Type: application/json');
+                echo json_encode($response);
+                exit;
+            }
             
             //echo "hello desde insDoc\n";
             //$cursoId = 333;

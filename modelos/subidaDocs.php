@@ -24,7 +24,7 @@ class Documentacion{
             //Si la URL existe, va a insertar
            // $sql = "CALL sp_cargaDocs(1, $cursoId, $TipoDocumento, $periodo, '$nombreArchivo', '$URLArchivo', '$fechaSubida', '$usuario', $estado, '$extension');";
 			
-			 $sql = "CALL sp_subirDoc(1,'$nombreArchivo','$URLArchivo',$TipoDocumento,'$usuario');";
+			 $sql = "CALL sp_subirDoc(1,'$nombreArchivo','$URLArchivo',$TipoDocumento,'$usuario', 0,0 ,'');";
 
             //echo " \n SQL: \n".$sql;
             return ejecutarConsultaSP($sql);

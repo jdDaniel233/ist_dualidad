@@ -19,7 +19,7 @@ if ($_SESSION['Escritorio']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="card text-center">
-                                <h1>FICHA DE EVALUACION <?php
+                                <h1>FICHA DE EVALUACIÓN <?php
 $id = $_GET['id'];
 //$nombre = $_GET['nombre'];
 //echo  $id;
@@ -34,7 +34,7 @@ $id = $_GET['id'];
                                     <table class="table">
                                         <tr>
                                           <th>N°</th>
-                                            <th><span class="text-center">Criterio de evalucaión </span></th>
+                                            <th><span class="text-center">Criterio de evaluación </span></th>
                                             <th>Nivel de dominio/ Validación sobre 10</th>
                                             <th>&nbsp;</th>
                                         </tr>
@@ -60,7 +60,7 @@ $id = $_GET['id'];
                                         <tr>
                                           <td>3</td>
                                             <td>
-                                                <p>Plantea soluciones acertadas ante los problemas laborales reales acorde a su prfil profesional </p>
+                                                <p>Plantea soluciones acertadas ante los problemas laborales reales acorde a su perfil profesional </p>
                                             </td>
                                             <td><input class="form-control" type="text" id="criterio3" name="criterio3"></td>
                                             <td>&nbsp;</td>

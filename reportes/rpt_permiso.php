@@ -10,7 +10,7 @@ if (!isset($_SESSION['usu_nombre'])) {
 }else{
 
 
-if ($_SESSION['Activos']==1 or $_SESSION['Actas']==1 ){
+if ($_SESSION['Generación']==1 or $_SESSION['Escritorio']==1 ){
 
 	require_once "../modelos/vacaciones.php";
 $info=new Asistencias();	

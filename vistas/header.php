@@ -102,15 +102,16 @@ $_SESSION['Escritorio']==1;
 if ($_SESSION['Actas']==1) {
   echo ' <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>Empresa</span>
+            <i class="fa fa-folder"></i> <span>Cargar documentos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="historialempresa.php"><i class="fa fa-circle-o"></i> Historial de empresas</a></li>           
-            <li><a href=""><i class="fa fa-circle-o"></i> Datos de la empresa</a></li>        
+                       
+                    
 			 <li><a href="subidaDocs.php"><i class="fa fa-circle-o"></i> Subir documentos</a></li> 
+			 <li><a href="documentosest.php"><i class="fa fa-circle-o"></i>Ver Documentos Cargados</a></li>
 			
           </ul>
         </li>';
@@ -126,10 +127,10 @@ if ($_SESSION['Activos']==1) {
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="primera.php"><i class="fa fa-circle-o"></i> Resgistrar docentes</a></li>
-		   <li><a href="estudiante.php"><i class="fa fa-circle-o"></i> Resgistrar estudiantes</a></li>
+           <li><a href="primera.php"><i class="fa fa-circle-o"></i> Registrar docentes</a></li>
+		   <li><a href="estudiante.php"><i class="fa fa-circle-o"></i> Registrar estudiantes</a></li>
 		   <li><a href="aprobardoc.php"><i class="fa fa-circle-o"></i>Aprobar documentos</a></li>
-		   <li><a href="archivos.php"><i class="fa fa-circle-o"></i>Documentos Subidos</a></li>
+		   <li><a href="docs.php"><i class="fa fa-circle-o"></i>Documentos Subidos</a></li>
 		   <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Catálogos</a></li>
           </ul>
         </li>';
@@ -146,8 +147,12 @@ if ($_SESSION['Generación']==1) {
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="bitacora.php"><i class="fa fa-circle-o"></i> Bitacoras</a></li>
+		  <li><a href="historialempresa.php"><i class="fa fa-circle-o"></i> Historial de empresas</a></li>
+		  
+           <li><a href="bitacora.php"><i class="fa fa-circle-o"></i> Bitácoras</a></li>
 		   <li><a href="informepro.php"><i class="fa fa-circle-o"></i> Proyecto Empresarial</a></li>
+		   <li><a href="documentoscheck.php"><i class="fa fa-circle-o"></i> Documentos Check List </a></li>
+		    
 		   
 		   
           </ul>
@@ -159,15 +164,14 @@ if ($_SESSION['Generación']==1) {
 if ($_SESSION['Acceso']==1) {
   echo '  <li class="treeview">
           <a href="#">
-            <i class="fa fa-laptop"></i> <span>Crear Matriz</span>
+            <i class="fa fa-laptop"></i> <span>Crear Matríz</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="planificacion.php"><i class="fa fa-circle-o"></i> Asignación</a></li>
-			<li><a href="listaMatriz.php"><i class="fa fa-circle-o"></i> Asignación</a></li>
-            
+			            
           </ul>
         </li>';
 }
@@ -199,9 +203,9 @@ if ($_SESSION['Custodios']==1) {
           </a>
           <ul class="treeview-menu">
 		  <li><a href=""><i class="fa fa-circle-o"></i> Informe del tutor</a></li>
-		   <li><a href=""><i class="fa fa-circle-o"></i> Bitacora Visita Empresas</a></li>
-           <li><a href="rubricaproy2.php"><i class="fa fa-circle-o"></i> Rubrica del Proyecto</a></li>
-		   <li><a href="fichaeva.php"><i class="fa fa-circle-o"></i> Fciha de Evaluación</a></li>
+		   <li><a href=""><i class="fa fa-circle-o"></i> Bitácora Visita Empresas</a></li>
+           <li><a href="rubricaproy2.php"><i class="fa fa-circle-o"></i> Rúbrica del Proyecto</a></li>
+		   <li><a href="fichaeva.php"><i class="fa fa-circle-o"></i> Ficha de Evaluación</a></li>
 
           </ul>
         </li>';

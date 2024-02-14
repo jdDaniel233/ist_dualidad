@@ -19,7 +19,7 @@ if ($_SESSION['Escritorio']==1) {
         <div class="col-md-12">
       <div class="box">
  <div class="card text-center">
-                                <h1>Rubrica para la defensa del proyecto empresarial <?php
+                                <h1>Rúbrica para la defensa del proyecto empresarial <?php
 $id = $_GET['id'];
 //$nombre = $_GET['nombre'];
 //echo  $id;
@@ -36,7 +36,7 @@ $id = $_GET['id'];
                                         <tr>
                                           <th>N°</th>
 										
-                                            <th>Criterio de evalucaión</th>
+                                            <th>Criterio de evaluación</th>
                                             <th>Nivel de dominio/ Validación sobre 10</th>
                                             <th>&nbsp;</th>
                                         </tr>

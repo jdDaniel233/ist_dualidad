@@ -5,7 +5,7 @@ if (!isset($_SESSION['usu_nombre'])) {
     header("Location: login.html");
 } else {
     require 'header.php';
-    if ($_SESSION['Escritorio'] == 1) {
+    if ($_SESSION['Actas'] == 1) {
 ?>
         <div class="content-wrapper">
             <!-- Main content -->
@@ -34,7 +34,7 @@ if (!isset($_SESSION['usu_nombre'])) {
                                     </div>
 		
 									<div class="form-group">
-                                        <input type="file" class="form-control" id="archivo" name="archivo" required>
+                                        <input type="file" class="form-control" id="archivo" name="archivo"  required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Subir Archivo</button>
                                 </form>
@@ -48,6 +48,8 @@ if (!isset($_SESSION['usu_nombre'])) {
                 <!-- /.box -->
             </section>
             <!-- /.content -->
+			
+			
         </div>
 <?php
     } else {

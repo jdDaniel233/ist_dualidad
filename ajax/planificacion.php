@@ -29,6 +29,18 @@ switch ($_GET["op"]) {
     case 'guardarDatos':
         guardarDatos();
         break;
+		 case 'guardarEstudiantes':
+        guardarEstudiantes();
+        break;
+		 case 'mostrarEstudinates':
+        mostrarEstudinates();
+        break;
+		case 'mostrarAsigandos':
+        mostrarAsigandos();
+        break;
+		case 'eliminarAsignacion':
+        eliminarAsignacion();
+        break;
     
     case 'combo_estado':
         $resultado = $conexion->combo_estado();
@@ -140,3 +152,112 @@ function mostrarDatos() {
     }
 }
 
+function guardarEstudiantes() {
+    // Recibe los datos del AJAX
+    $parametroUrl = $_POST['parametroUrl']; 
+    $ids = $_POST['ids'];
+    $Gestor = $_POST['Gestor'];
+    $Tutor = $_POST['Tutor'];
+
+    $conexion = new Conexion();
+
+    // Itera sobre los IDs seleccionados y guarda cada bitácora
+    foreach ($ids as $id) {
+       
+        $resultado = $conexion->guardarAsigacionEst($parametroUrl,$id,$Gestor,$Tutor);
+
+    }
+
+    // Devuelve una respuesta al cliente
+    echo $resultado ? "Datos registrados correctamente" : "No se pudo registrar datos incorrectos";
+}
+
+function mostrarEstudinates() {
+    $conexion = new Conexion();
+    $respuesta = $conexion->datatableEst();
+    if ($respuesta->num_rows > 0) {
+        $datos = array();
+        while ($fila = $respuesta->fetch_assoc()) {
+			$id = $fila["est_id"];
+            $nombre = $fila["est_nombre"];
+			$correo = $fila["est_correoInstitucional"];
+			$celular = $fila["est_celular"];
+			$direccion = $fila["est_direccion"];
+			$carrera = $fila["cat_carrera"];
+			$cedula = $fila["est_cedula"];
+			$periodo = $fila["cat_periodo"];
+			$login = $fila["est_login"];
+			//$clave = $fila["est_clave"];
+			
+           
+            $datos[] = array(
+                "id" => $id,
+                "nombre" => $nombre,
+				"correo" => $correo,
+				"celular" => $celular,
+				"direccion" => $direccion,
+				"carrera" => $carrera,
+				"cedula" => $cedula,
+				"periodo" => $periodo,
+				"login" => $login,
+				"clave" => $clave,
+				
+				
+                
+                //"opcionbtn" => $opcionbtn,
+            );
+        }
+        echo json_encode(array("data" => $datos));
+    } else {
+        echo json_encode(array("data" => array())); // En caso de no haber datos, envía un arreglo vacío
+    }
+}
+
+function mostrarAsigandos() {
+  
+    $conexion = new Conexion();
+        $respuesta = $conexion->datatableAsignados();
+    if ($respuesta->num_rows > 0) {
+        $datos = array();
+        while ($fila = $respuesta->fetch_assoc()) {
+			$id= $fila["detplan_id"];
+			$empresa = $fila["pla_empresa"];
+			$proyecto = $fila["pla_proyecto"];
+			$est_id= $fila["est_id"];
+            $estudiante = $fila["est_nombre"];
+			$gestor = $fila["usu_gestor"];
+			$tutor = $fila["usu_tutor"];
+			
+			
+            
+
+            $datos[] = array(
+					"id" => $id,
+                	"empresa" => $empresa,
+                    "proyecto" => $proyecto,
+				"est_id" => $est_id,
+                    "estudiante" => $estudiante,
+             		"gestor" => $gestor,
+					"tutor" => $tutor,
+                    
+                    
+                
+                //"opcionbtn" => $opcionbtn,
+            );
+        }
+        echo json_encode(array("data" => $datos));
+    } else {
+        echo json_encode(array("data" => array())); // En caso de no haber datos, envía un arreglo vacío
+    }
+}
+
+function eliminarAsignacion() {
+    $conexion = new Conexion();
+
+    // Obtén los datos del formulario usando $_POST
+    $id = $_POST['id'];
+	$est_id= $_POST['est_id'];
+    $resultado = $conexion->eliminarAsignacion($id,$est_id);
+
+   echo $resultado ? "Datos eliminados correctamente" : "No se puede eliminar";
+}

@@ -105,31 +105,4 @@ function NbLines($w,$txt)
     return $nl;
 }
 }
-class PDF extends FPDF {
-    function Header() {
-        // Configuración de la imagen en la parte superior izquierda de cada página
-        $this->Image('../files/img/gob.png', 25, 15, 23);
-        $this->Image('../files/img/ist17.png', 170, 15, 22);
-
-        // Puedes personalizar el encabezado si lo deseas
-      
-    }
-
-    function Footer() {
-        // Agregar el pie de página con el número de página
-        $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        // Ajusta la ruta y las coordenadas según tus necesidades
-        $this->Image('../files/img/gob1.png', 8, 260, 200 ); 
-        
-    }
-  }
-  
-  // Crear instancia de PDF
-  $pdf = new PDF();
-  $pdf->AddPage();
-
-
-
-
 ?>

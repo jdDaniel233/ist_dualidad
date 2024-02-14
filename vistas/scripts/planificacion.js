@@ -1,15 +1,21 @@
-$.post("../ajax/estudiante.php?op=combo_carrera", function(r){
-	   $("#carrera").html(r);      
-});
+// JavaScript Document  
+var selecId; // Declarar selecId como variable global
 
-$.post("../ajax/estudiante.php?op=combo_periodo", function(r){
-	   $("#periodo").html(r);      
-});
-// Asignar a los estudiantes
+$(document).ready(function () {
+    // Llena el combo de carrera
+    $.post("../ajax/estudiante.php?op=combo_carrera", function (r) {
+        $("#carrera").html(r);
+    });
 
-//TABLA PLANI
-$(document).ready(function() {
-    $('#tbllistadop').DataTable({
+    // Llena el combo de periodo
+    $.post("../ajax/estudiante.php?op=combo_periodo", function (r) {
+        $("#periodo").html(r);
+    });
+
+   // var selectedIds = []; // Lista para almacenar los IDs seleccionados
+
+    // Configuración de la tabla DataTable para la planificación
+    var tablePlanificacion = $('#tbllistadop').DataTable({
         ajax: {
             url: "../ajax/planificacion.php?op=mostrarDatos",
             type: "POST",
@@ -19,33 +25,70 @@ $(document).ready(function() {
             { data: 'id', visible: false }, // Oculta la columna del ID
             { data: 'proyecto' },
             { data: 'empresa' },
-			{ data: 'carrera' },
+            { data: 'carrera' },
             { data: 'periodo' },
-			{ data: 'fechainicio' },
+            { data: 'fechainicio' },
             { data: 'fechafin' },
-			           
             {
                 // Agrega el botón "Visualizar" y maneja el evento de clic
-                render: function(data, type, row) {
-                    return '<button class="btn btn-success btn-xs btnVisualizar" data-id="' + row.id + '">Asignar estudiantes</button>';
+                render: function (data, type, row) {
+                    return '<button class="btn btn-success btn-xs btnAsignar" data-id="' + row.id + '">Asignar estudiantes</button>' + '   '+
+						'<button class="btn btn-warning btn-xs btnVerAsigandos" data-id="' + row.id + '">Ver Asignados</button>';
                 }
             }
         ]
     });
 
-    // Maneja el evento de clic en el botón "Visualizar"
-    $('#tbllistadop').on('click', '.btnVisualizar', function() {
-        var id = $(this).data('id');
-		
-        window.location.href = 'planificaciondet.php?id=' + id;
+    // Maneja el evento de clic en el botón "Asignar estudiantes"
+    $('#tbllistadop tbody').on('click', '.btnAsignar', function () {
+        var rowData = tablePlanificacion.row($(this).closest('tr')).data(); // Obtenemos los datos de la fila actual
+        selecId = rowData.id; // Asignamos el valor de selecId
+       // alert('El ID es: ' + selecId);
+        window.location.href = 'planificaciondet.php?id=' + selecId;
     });
-});
+	
+	// Maneja el evento de clic en el botón "Asignar estudiantes"
+    $('#tbllistadop tbody').on('click', '.btnVerAsigandos', function () {
+        var rowData = tablePlanificacion.row($(this).closest('tr')).data(); // Obtenemos los datos de la fila actual
+        selecId = rowData.id; // Asignamos el valor de selecId
+        //alert('El ID es: ' + selecId);
+        window.location.href = 'asignaest.php?id=' + selecId;
+    });
 
-//tabla estudiantes 
-$(document).ready(function() {
-    var table = $('#tbllistadoe').DataTable({
+    // Manejar el evento de submit del formulario para estudiantes
+   /* $(document).on('submit', '#estudiante', function (e) {
+        e.preventDefault();
+
+        var Gestor = $('#Gestor').val();
+        var Tutor = $('#Tutor').val();
+        alert('Mostrar ID variable global: ' + selecId);
+
+        // Resto del código AJAX...
+        $.ajax({
+            type: 'POST',
+            url: '../ajax/planificacion.php?op=guardarEstudiantes',
+            data: {
+                selecId: selecId,
+                ids: selectedIds,
+                Gestor: Gestor,
+                Tutor: Tutor
+            },
+            success: function (datos) {
+                
+                bootbox.alert(datos, function () {
+                    location.reload();
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+            }
+        });
+    });*/
+
+    // Configuración de la tabla DataTable para estudiantes
+    var tableEstudiantes = $('#tbllistadoe').DataTable({
         ajax: {
-            url: "../ajax/rubricaproyecto.php?op=mostrarDatos",
+            url: "../ajax/planificacion.php?op=mostrarEstudinates",
             type: "POST",
             dataSrc: 'data'
         },
@@ -61,158 +104,152 @@ $(document).ready(function() {
             { data: 'login' },
             {
                 // Cambia el botón de "Visualizar" a un cuadro de selección
-                render: function(data, type, row) {
+                render: function (data, type, row) {
                     return '<input type="checkbox" class="chkVisualizar" data-id="' + row.id + '">';
                 }
             }
         ]
     });
 
-    // Maneja el evento de clic en el botón "Visualizar"
-    $('#tbllistado').on('click', '.chkVisualizar', function() {
-        // Puedes manejar la lógica aquí cuando se selecciona/deselecciona una fila
+    // Maneja el evento de clic en el checkbox "Visualizar" para estudiantes
+   /* $('#tbllistadoe').on('click', '.chkVisualizar', function () {
         var id = $(this).data('id');
+
+        // Agrega o elimina el ID de la lista según si está seleccionado o no
         if ($(this).prop('checked')) {
-            // Acciones cuando se selecciona la fila
-            console.log('Fila seleccionada con ID: ' + id);
+            selectedIds.push(id);
         } else {
-            // Acciones cuando se deselecciona la fila
-            console.log('Fila deseleccionada con ID: ' + id);
+            selectedIds = selectedIds.filter(function (selectedId) {
+                return selectedId !== id;
+            });
         }
-    });
 
-    // Ejemplo de un botón adicional para realizar alguna acción
-    $('#realizarAccion').on('click', function() {
-        // Obtén las filas seleccionadas
-        var filasSeleccionadas = table.rows('.selected').data();
-
-        // Realiza la acción que desees con las filas seleccionadas
-        console.log('Filas seleccionadas:', filasSeleccionadas);
-    });
+        console.log('IDs seleccionados:', selectedIds);
+    });*/
 });
 
+/***********************************************************************/
 
+// Funciones para mostrar y ocultar el formulario y recargar la tabla
 $(document).ready(function () {
-  // Inicialmente, oculta el formulario
-  $("#formulario").hide();
-
-  // Agrega el evento click para el botón "Agregar Proyecto"
-  $("#btnagregar").click(function () {
-    // Oculta la tabla y muestra el formulario al hacer clic en el botón Agregar
-    $("#listadoregistros").hide();
-    $("#formulario").show();
-    // Muestra el botón Regresar
-    $("#btnregresar").show();
-    // Oculta el botón Agregar
-    $(this).hide();
-  });
-
-  // Agrega el evento click para el botón "Regresar"
-  $("#btnregresar").click(function () {
-    // Muestra la tabla y oculta el formulario al hacer clic en el botón Regresar
-    $("#listadoregistros").show();
+    // Inicialmente, oculta el formulario
     $("#formulario").hide();
-    // Muestra el botón Agregar
-    $("#btnagregar").show();
-    // Oculta el botón Regresar
-    $(this).hide();
 
-    // Recarga el DataTable después de regresar
-    var tabla = $("#tblmatriz").DataTable();
-    tabla.ajax.reload();
-  });
+    // Agrega el evento click para el botón "Agregar Proyecto"
+    $("#btnagregar").click(function () {
+        // Oculta la tabla y muestra el formulario al hacer clic en el botón Agregar
+        $("#listadoregistros").hide();
+        $("#formulario").show();
+        // Muestra el botón Regresar
+        $("#btnregresar").show();
+        // Oculta el botón Agregar
+        $(this).hide();
+    });
+
+    // Agrega el evento click para el botón "Regresar"
+    $("#btnregresar").click(function () {
+        // Muestra la tabla y oculta el formulario al hacer clic en el botón Regresar
+        $("#listadoregistros").show();
+        $("#formulario").hide();
+        // Muestra el botón Agregar
+        $("#btnagregar").show();
+        // Oculta el botón Regresar
+        $(this).hide();
+
+        // Recarga el DataTable después de regresar
+        var tabla = $("#tblmatriz").DataTable();
+        tabla.ajax.reload();
+    });
 });
 
+// Maneja el evento submit del formulario de registro de planificación
+$('#matriz').submit(function (e) {
+    e.preventDefault();
 
-// registrar la la planificación
-$('#matriz').submit(function(e) {
-    e.preventDefault(); 
-  
-      var empresa = $('#empresa').val();
-	var tutorEmpresarial = $('#tutorEmpresarial').val();
-	var encargado = $('#encargado').val();
-	var titulo = $('#titulo').val();
-	var cargo = $('#cargo').val();
-	var carrera = $('#carrera').val();
-      var periodo = $('#periodo').val();
-	
-      var nucleo = $('#nucleo').val();
-      var proyecto = $('#proyecto').val();
-      var fechaInicio = $('#fechaInicio').val();
-      var fechafin = $('#fechafin').val();
-      var diaspro = $('#diaspro').val();
-      
-      var horasDestinadas = $('#horasDestinadas').val();
-      var horasproyecto = $('#horasproyecto').val();
-      var totalhoras = $('#totalhoras').val();
-	var fechaEntregaDocse = $('#fechaEntregaDocse').val();
-	var fechaFinEntregaDocst = $('#fechaFinEntregaDocst').val();
-	var fechaFinEntregaDocsg = $('#fechaFinEntregaDocsg').val();
-   
+    var empresa = $('#empresa').val();
+    var tutorEmpresarial = $('#tutorEmpresarial').val();
+    var encargado = $('#encargado').val();
+    var titulo = $('#titulo').val();
+    var cargo = $('#cargo').val();
+    var carrera = $('#carrera').val();
+    var periodo = $('#periodo').val();
+
+    var nucleo = $('#nucleo').val();
+    var proyecto = $('#proyecto').val();
+    var fechaInicio = $('#fechaInicio').val();
+    var fechafin = $('#fechafin').val();
+    var diaspro = $('#diaspro').val();
+
+    var horasDestinadas = $('#horasDestinadas').val();
+    var horasproyecto = $('#horasproyecto').val();
+    var totalhoras = $('#totalhoras').val();
+    var fechaEntregaDocse = $('#fechaEntregaDocse').val();
+    var fechaFinEntregaDocst = $('#fechaFinEntregaDocst').val();
+    var fechaFinEntregaDocsg = $('#fechaFinEntregaDocsg').val();
+
     $.ajax({
-          type: 'POST',
-          url: '../ajax/planificacion.php?op=insertar',
-          data: {
-			empresa: empresa, 
-            tutorEmpresarial: tutorEmpresarial, 
+        type: 'POST',
+        url: '../ajax/planificacion.php?op=insertar',
+        data: {
+            empresa: empresa,
+            tutorEmpresarial: tutorEmpresarial,
             encargado: encargado,
-            titulo:titulo, 
-            cargo:cargo,
-            carrera:carrera,
-            periodo:periodo,
-            nucleo:nucleo,
-            proyecto:proyecto,
-            fechaInicio:fechaInicio,
-            fechafin:fechafin,
-			diaspro:diaspro,
-			  horasDestinadas:horasDestinadas,
-			  horasproyecto:horasproyecto,
-			  totalhoras:totalhoras,
-			  fechaEntregaDocse:fechaEntregaDocse,
-			  fechaFinEntregaDocst:fechaFinEntregaDocst,
-			  fechaFinEntregaDocsg:fechaFinEntregaDocsg
-		  },
-          success: function(response) {
+            titulo: titulo,
+            cargo: cargo,
+            carrera: carrera,
+            periodo: periodo,
+            nucleo: nucleo,
+            proyecto: proyecto,
+            fechaInicio: fechaInicio,
+            fechafin: fechafin,
+            diaspro: diaspro,
+            horasDestinadas: horasDestinadas,
+            horasproyecto: horasproyecto,
+            totalhoras: totalhoras,
+            fechaEntregaDocse: fechaEntregaDocse,
+            fechaFinEntregaDocst: fechaFinEntregaDocst,
+            fechaFinEntregaDocsg: fechaFinEntregaDocsg
+        },
+        success: function (response) {
             // Manejar la respuesta del servidor
             alert(response);
-          }
-        });  
-  });
+			location.reload();
+        }
+    });
+});
 
-
+// Funciones para la navegación entre pasos en un formulario de varios pasos
 let currentStep = 1;
 
 function showStep(step) {
-  $('.form-step').hide();
-  $(`.form-step[data-step="${step}"]`).show();
+    $('.form-step').hide();
+    $(`.form-step[data-step="${step}"]`).show();
 
-  // Ocultar o mostrar botones según el paso
-  if (step === 1) {
-    $('#prevBtn').hide();
-    $('#nextBtn').show();
-    $('#btnGuardar').hide();
-  } else if (step === 2) {
-    $('#prevBtn').show();
-    $('#nextBtn').show();
-    $('#btnGuardar').show();
-  }
+    // Ocultar o mostrar botones según el paso
+    if (step === 1) {
+        $('#prevBtn').hide();
+        $('#nextBtn').show();
+        $('#btnGuardar').hide();
+    } else if (step === 2) {
+        $('#prevBtn').show();
+        $('#nextBtn').show();
+        $('#btnGuardar').show();
+    }
 }
 
 function nextPrev(n) {
-  currentStep += n;
+    currentStep += n;
 
-  // Validar si estamos en el primer o último paso
-  if (currentStep < 1) {
-    currentStep = 1;
-  } else if (currentStep > $('.form-step').length) {
-    currentStep = $('.form-step').length;
-  }
+    // Validar si estamos en el primer o último paso
+    if (currentStep < 1) {
+        currentStep = 1;
+    } else if (currentStep > $('.form-step').length) {
+        currentStep = $('.form-step').length;
+    }
 
-  // Mostrar el paso actual
-  showStep(currentStep);
+    // Mostrar el paso actual
+    showStep(currentStep);
 }
 
 // Mostrar el primer paso al cargar la página
 showStep(currentStep);
-
-

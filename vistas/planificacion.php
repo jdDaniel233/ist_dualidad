@@ -8,7 +8,7 @@ if (!isset($_SESSION['usu_nombre'])) {
 }else{
 
 require 'header.php';
-if ($_SESSION['Escritorio']==1) {
+if ($_SESSION['Activos']==1) {
  ?>
     <div class="content-wrapper">
     <!-- Main content -->
@@ -41,7 +41,7 @@ $id = $_GET['id'];
 </div>
 <!--box-header-->
 <!--centro-->
-<div style="width:900" id="listadoregistros">
+<div style="width:100%" id="listadoregistros">
   <table id="tbllistadop"  class="table table-striped table-bordered table-condensed table-hover"> 
     <thead>
         <th>Id</th>
@@ -51,9 +51,9 @@ $id = $_GET['id'];
                                         <th>Periodo</th>
                                         <th>Fecha Inicio</th>
                                         <th>Fecha Fin</th>
-                                        <th>Accion</th>
+                                        <th>Acción</th>
 
-		<th></th>
+		
     </thead>
     <tbody>
     </tbody>   
@@ -119,7 +119,7 @@ $id = $_GET['id'];
          </div>
 		
 		 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-          <label for="cargo">Nucleo Estructurante(*):</label>
+          <label for="cargo">Núcleo Estructurante(*):</label>
           <input type="text" id="nucleo" name="nucleo" class="form-control">
         </div>
 		  <div class="form-group col-lg-6 col-md-6 col-xs-12">

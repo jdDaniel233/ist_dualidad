@@ -21,7 +21,7 @@ $(document).ready(function() {
             {
                 // Agrega el botón "Visualizar" y maneja el evento de clic
                 render: function(data, type, row) {
-                    return '<button class="btn btn-success btn-xs btnVisualizar" data-id="' + row.id + '">Calificar Rubrica</button>';
+                    return '<button class="btn btn-success btn-xs btnVisualizar" data-id="' + row.id + '">Calificar Rúbrica</button>';
                 }
             }
         ]

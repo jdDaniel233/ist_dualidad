@@ -9,7 +9,7 @@ if (!isset($_SESSION['usu_nombre'])) {
 }else{
 
 require 'header.php';
-if ($_SESSION['Escritorio']==1) {
+if ($_SESSION['Generación']==1) {
 	// Obtén el valor de usu_id desde la sesión
     $usu_id = isset($_SESSION['usu_id']) ? $_SESSION['usu_id'] : '';
 	 $usu_nombre = isset($_SESSION['usu_nombre']) ? $_SESSION['usu_nombre'] : '';
@@ -23,7 +23,7 @@ if ($_SESSION['Escritorio']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-  <h1 class="box-title">Bitacora</h1>
+  <h1 class="box-title">Bitácora</h1>
   <div class="box-tools pull-right">
     
   </div>
@@ -67,8 +67,8 @@ if ($_SESSION['Escritorio']==1) {
     									<th>id</th>
 										<th>Nombre</th>
    										 <th>Documento</th>
-    									<th>Creacion</th>
-										<th>Visualizar</th>
+    									<th>Creación</th>
+										<th>Opciones</th>
 										</thead>
 									<tbody>
 									</tbody>   

@@ -1,4 +1,3 @@
-
 <?php 
 //activamos almacenamiento en el buffer
 ob_start();
@@ -33,9 +32,9 @@ if ($_SESSION['Escritorio']==1) {
       <th>Nombre</th>
       <th>Correo</th>
       <th>Celular</th>
-      <th>Direccion</th>
+      <th>Dirección</th>
       <th>Carrera</th>
-      <th>Cedula</th>
+      <th>Cédula</th>
       <th>Periodo</th>
 	  <th>Login</th>
 	  
@@ -49,23 +48,28 @@ if ($_SESSION['Escritorio']==1) {
   <form action="" name="estudiante" id="estudiante" method="POST">
     <div class="form-group col-lg-12 col-md-12 col-xs-12">
       <label for="">Ingrese el gestor local(*):</label>
-     
-      <input class="form-control" type="text" name="nombre" id="nombre" maxlength="100" placeholder="Nombre del gestor local" required>
+      <input class="form-control" type="text" name="nombre" id="Gestor" maxlength="100" placeholder="Nombre del gestor local" required>
     </div>
    
     <div class="form-group col-lg-12 col-md-12 col-xs-12">
       <label for="">Ingrese el tutor académico de la carrera(*):</label>
-      <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Nombre del tutor Académico" maxlength="20">
+      <input type="text" class="form-control" name="cedula" id="Tutor" placeholder="Nombre del tutor Académico" maxlength="20">
     </div>
 
-      
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <button class="btn btn-primary" type="button" id="btnGuardar"><i class="fa fa-save"></i>  Nosrive</button>
-      <button class="btn btn-danger" onclick="window.location.href='planificacion.php'" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-		<button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
+      <!-- Cambiado el tipo de botón a "submit" -->
+		
+      <button class="btn btn-primary" type="submit" id="btnguardar"><i class="fa fa-save"></i> Guardar</button>
+		
+	<button class="btn btn-danger" onclick="window.location.href='planificacion.php'" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+		
+
+		
+
     </div>
   </form>
 </div>
+
 <!--fin centro-->
       </div>
       </div>
@@ -81,8 +85,10 @@ if ($_SESSION['Escritorio']==1) {
 }
 require 'footer.php';
  ?>
- <script src="scripts/hmac-sha256.js"></script>
+
  <script src="scripts/planificacion.js"></script>
+<script src="scripts/planidet.js"></script>
+
  <?php 
 }
 

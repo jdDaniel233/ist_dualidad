@@ -19,7 +19,8 @@ if ($_SESSION['Escritorio']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-  <h1 class="box-title">Bitacora <button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i>Agregar</button></h1><?php
+  <h1 class="box-title">Bitácora 
+    <button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i>Agregar</button></h1><?php
 $id = $_GET['id'];
 //echo  $id;
 ?>
@@ -80,23 +81,20 @@ $id = $_GET['id'];
 
                                         <div class="form-group col-lg-3 text-center">
                                             <label for="detb_TotalHoras">TOTAL HORAS: HORA/DÍA</label>
-                                            <input type="time" class="form-control" name="TotalHoras" id="TotalHoras"
-                                                required>
+                                            <input type="text" class="form-control" name="TotalHoras" id="TotalHoras">
                                         </div>
                                         <!-- Primer campo de texto -->
-                                        <div class="form-group col-lg-6 ">
-                                            <label for="detb_actividadesRealizadas">Actividades Realizadas:</label>
-                                            <textarea id="actividadesRea" name="actividadesRea"
-                                                class="form-control" required maxlength="100"
-                                                oninput="actualizarContador('detb_actividadesRealizadas', 'caracteresRestantes1')"></textarea>
-                                            <small id="caracteresRestantes1">100/100</small>
-                                        </div>
+										<div class="form-group col-lg-6">
+										<label for="detb_actividadesRealizadas">Actividades Realizadas:</label>
+										<textarea id="actividadesRea" name="actividadesRea" class="form-control" required></textarea>
+										<small id="caracteresRestantes1">100/100</small>
+									</div>
 
                                         <!-- Segundo campo de texto -->
                                         <div class="form-group  col-lg-6">
                                             <label for="detb_experiencias">Experiencias:</label>
                                             <textarea id="experiencias" name="experiencias" class="form-control"
-                                                required maxlength="100"
+                                                required 
                                                 oninput="actualizarContador('detb_experiencias', 'caracteresRestantes2')"></textarea>
                                             <small id="caracteresRestantes2">100/100</small>
                                         </div>
@@ -105,7 +103,7 @@ $id = $_GET['id'];
                                         <div class="form-group  col-lg-6">
                                             <label for="detb_aprendizajes">Aprendizajes:</label>
                                             <textarea id="aprendizajes" name="aprendizajes" class="form-control"
-                                                required maxlength="100"
+                                                required 
                                                 oninput="actualizarContador('detb_aprendizajes', 'caracteresRestantes3')"></textarea>
                                             <small id="caracteresRestantes3">100/100</small>
                                         </div>
@@ -114,7 +112,7 @@ $id = $_GET['id'];
                                         <div class="form-group  col-lg-6">
                                             <label for="detb_propuestas">Propuestas:</label>
                                             <textarea id="propuestas" name="propuestas" class="form-control" required
-                                                maxlength="100"
+                                                
                                                 oninput="actualizarContador('detb_propuestas', 'caracteresRestantes4')"></textarea>
                                             <small id="caracteresRestantes4">100/100</small>
                                         </div>
@@ -131,6 +129,98 @@ $id = $_GET['id'];
 
                                     </form>
 </div>
+	
+		  <style>
+  .modal-xl {
+    width: 70%;
+  }
+
+ 
+
+</style>
+<div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenido del formulario de edición -->
+        <form id="editarForm">
+          <!-- ... tus campos de edición ... -->
+	                                  
+    <div class="text-center">
+											<h1 align="center">Bitácora</h1>
+                                            <h3 class="text-dark">Ingrese correctamente los datos para editar la actividad
+                                                realizada</h3>
+                                        </div>
+                                        <div>
+                                             <input class="form-control" type="hidden" name="bita_id2" id="bita_id2" required value="<?php echo  $id; ?>">
+                                        </div>
+
+                                        <div class="form-group col-lg-3 text-center">
+                                            <label for="detb_fecha">Fecha: dd-mm-aaaa</label>
+                                           <input type="date" class="form-control" name="fecha2" id="fecha2" required value="<?php echo $_SESSION["fecha"] ?>">
+                                        </div>
+
+                                        <div class="form-group col-lg-3 text-center">
+                                            <label for="detb_horaIngreso">HORA DE INGRESO: HH-MM</label>
+                                            <input type="time" class="form-control" name="horaIngresoModal"
+                                                id="horaIngresoModal" required value="<?php echo $_SESSION["horaIngreso"] ?>">
+                                        </div>
+
+                                        <div class="form-group col-lg-3 text-center">
+                                            <label for="detb_horaSalida">HORA DE SALIDA: HH-MM</label>
+                                            <input type="time" class="form-control" name="horaSalidaModal" id="horaSalidaModal"
+                                                required value="<?php echo $_SESSION["horaSalida"] ?>">
+                                        </div>
+
+                                        <div class="form-group col-lg-3 text-center">
+                                            <label for="detb_TotalHoras">TOTAL HORAS: HORA/DÍA</label>
+                                            <input type="text" class="form-control" name="TotalHorasModal" id="TotalHorasModal" readonly value="<?php echo $_SESSION["TotalHoras"] ?>">
+                                        </div>
+                                        <!-- Primer campo de texto -->
+                                        <div class="form-group col-lg-6">
+										<label for="detb_actividadesRealizadas">Actividades Realizadas:</label>
+										<textarea id="actividadesRea2" name="actividadesRea2" class="form-control" required><?php echo $_SESSION["actividades"]; ?></textarea>
+										<small id="caracteresRestantes1">100/100</small>
+									</div>
+
+
+                                        <!-- Segundo campo de texto -->
+                                        <div class="form-group  col-lg-6">
+                                            <label for="detb_experiencias">Experiencias:</label>
+                                            <textarea id="experiencias2" name="experiencias2" class="form-control"
+                                                required> <?php echo $_SESSION["experiencias"] ?></textarea>
+                                            <small id="caracteresRestantes2">100/100</small>
+                                        </div>
+
+                                        <!-- Tercer campo de texto -->
+                                        <div class="form-group  col-lg-6">
+                                            <label for="detb_aprendizajes">Aprendizajes:</label>
+                                            <textarea id="aprendizajes2" name="aprendizajes2" class="form-control"
+                                                required><?php echo $_SESSION["aprendizajes"] ?></textarea>
+                                            <small id="caracteresRestantes3">100/100</small>
+                                        </div>
+
+                                        <!-- Cuarto campo de texto -->
+                                        <div class="form-group  col-lg-6">
+                                            <label for="detb_propuestas">Propuestas:</label>
+                                            <textarea id="propuestas2" name="propuestas2" class="form-control" required><?php echo $_SESSION["propuestas"] ?></textarea>
+                                            <small id="caracteresRestantes4">100/100</small>
+                                        </div>
+                                    
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+		  
+
 <!--fin centro-->
       </div>
       </div>
